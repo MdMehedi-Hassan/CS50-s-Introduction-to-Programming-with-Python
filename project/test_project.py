@@ -1,22 +1,24 @@
+import project
 import pytest
-from project import add, subtract, multiply, divide
 
-def test_add():
-    assert add(1, 2) == 3
-    assert add(-1, 1) == 0
-    assert add(0, 0) == 0
+def test_add_task():
+    project.add_task("Test task", "2024-12-31")
+    tasks = project.load_tasks_from_file()
+    assert tasks[-1]['description'] == "Test task"
+    assert tasks[-1]['deadline'] == "2024-12-31"
+    assert tasks[-1]['completed'] == False
 
-def test_subtract():
-    assert subtract(2, 1) == 1
-    assert subtract(-1, -1) == 0
-    assert subtract(0, 5) == -5
+def test_delete_task():
+    project.add_task("Task to delete", "2024-12-31")
+    task_id = len(project.load_tasks_from_file())
+    project.delete_task(task_id)
+    tasks = project.load_tasks_from_file()
+    assert all(task['id'] != task_id for task in tasks)
 
-def test_multiply():
-    assert multiply(2, 3) == 6
-    assert multiply(-1, 5) == -5
-    assert multiply(0, 100) == 0
+def test_mark_task_complete():
+    project.add_task("Task to complete", "2024-12-31")
+    task_id = len(project.load_tasks_from_file())
+    project.mark_task_complete(task_id)
+    tasks = project.load_tasks_from_file()
+    assert tasks[task_id - 1]['completed'] == True
 
-def test_divide():
-    assert divide(6, 3) == 2
-    assert divide(-6, 3) == -2
-    assert divide(5, 0) == "Error: Division by zero is not allowed."
