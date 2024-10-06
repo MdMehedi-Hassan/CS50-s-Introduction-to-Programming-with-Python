@@ -1,6 +1,5 @@
 # CS50-s-Introduction-to-Programming-with-Python
 # Task Manager
-#### Video Demo:  https://youtu.be/QKfA_hNvP48
 #### Description:
 
 The **Task Manager** is a Python-based terminal application designed to help users efficiently manage their tasks. The program allows users to add tasks with descriptions and deadlines, view a list of their tasks, update task details, delete tasks, and mark tasks as complete. To ensure task data is not lost between sessions, the program uses a simple file-based persistence system by saving tasks to a JSON file.
