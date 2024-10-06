@@ -15,4 +15,5 @@ This project is a simple calculator that performs basic arithmetic operations, i
 2. Download the project files.
 3. Navigate to the project directory in your terminal.
 4. Run the program using:
-   ```python project.py
+   ```bash
+   python project.py
